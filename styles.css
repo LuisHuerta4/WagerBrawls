@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2a215e;
+  font-family: "Russo One", sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 30%;
+  background-color: #17153b;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  text-align: center;
+}
+
+.profile-picture img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-menu {
+  list-style-type: none;
+  margin-top: 50px;
+}
+
+#username {
+  font-size: 150%;
+}
+
+.profile-menu li {
+  margin: 20px 0;
+}
+
+.main-content {
+  width: 70%;
+  background-color: #2e236c;
+  color: white;
+  flex-grow: 1;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header img {
+  max-width: 100%;
+  width: 30vw;
+  height: auto;
+  padding: 20px 0px 20px 0px; /*top, right, bot, left*/
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 10px;
+  background-color: #433d8b;
+}
+
+.nav-menu {
+  list-style-type: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-menu li {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.game-tile img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.game-tile {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 30px;
+  }
+  
+  .profile-picture img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .header img {
+    width: 50vw;
+  }
+
+  .nav-menu li {
+    cursor: pointer;
+    font-size: 10px;
+  }
+
+  .game-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+}
+@media (max-width: 1070px) and (min-width: 801px) {
+  .profile-picture img {
+    width: 140px;
+    height: 140px;
+  }
+
+  #username {
+    font-size: 150%;
+  }
+
+  .profile-menu li {
+    margin: 20px 0;
+  }
+
+  .game-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
