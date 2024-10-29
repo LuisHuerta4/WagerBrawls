@@ -12,6 +12,7 @@ body {
 .container {
   display: flex;
   height: 100vh;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -22,6 +23,7 @@ body {
   justify-content: center;
   padding-top: 100px;
   text-align: center;
+  overflow-y: auto; /* Allows sidebar content to scroll if it overflows */
 }
 
 .profile-picture img {
@@ -49,6 +51,7 @@ body {
   background-color: #2e236c;
   color: white;
   flex-grow: 1;
+  overflow-y: auto;
 }
 
 .header {
@@ -96,6 +99,11 @@ body {
 .game-tile img {
   width: 100%;
   border-radius: 10px;
+  transition: transform 0.3s ease; 
+}
+
+.game-tile:hover img {
+  transform: scale(1.1); 
 }
 
 .game-tile {
@@ -106,6 +114,38 @@ body {
   align-items: center;
 }
 
+#news {
+  background-color: #2a215e;
+  padding: 50px 20px;
+  height: 700px;
+  width: auto;
+  border-radius: 25px;
+}
+
+#news h1 {
+  color: #ffcd04;
+  font-size: 2em;
+}
+
+.news-item {
+  border-bottom: 1px solid #ffffff;
+  padding: 15px 0;
+}
+
+.news-item p {
+  padding: 10px;
+}
+
+.news-item h3 {
+  font-size: 1.5em;
+  padding-bottom: 10px;
+}
+
+.main-content {
+  scrollbar-width: thin; 
+  scrollbar-color: rgba(0, 0, 0, 0.4) transparent; 
+}
+
 @media (max-width: 800px) {
   .game-grid {
     display: grid;
@@ -113,7 +153,7 @@ body {
     gap: 10px;
     margin-top: 30px;
   }
-  
+
   .profile-picture img {
     width: 90px;
     height: 90px;
