@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/home.css" />
   </head>
   <body>
     <div class="container">
@@ -19,7 +19,7 @@
       <div class="sidebar">
         <div class="profile-section">
           <div class="profile-picture">
-            <img src="/images/Assets/profilePlaceHolder.jpg" alt="User Profile" />
+            <img src="/images/Assets/profileIcon1.jpg" alt="User Profile" />
           </div>
           <ul class="profile-menu">
             <li id="username">xXBrawlerXx</li>
@@ -47,44 +47,18 @@
         <!-- Game Grid -->
         <div class="game-grid">
           <!-- Dynamically render game tiles -->
-          <% const games = [
-              { img: "fortnite.jpg", alt: "Fortnite" },
-              { img: "valorant.jpg", alt: "Valorant" },
-              { img: "clashRoyale.jpg", alt: "Clash Royale" },
-              { img: "2XKO.png", alt: "2XKO" },
-              { img: "Aether.jpg", alt: "Aether" },
-              { img: "brawlhalla.jpg", alt: "Brawlhalla" },
-              { img: "brawlstars.jpg", alt: "Brawl Stars" },
-              { img: "COD6.jpg", alt: "Black Ops 6" },
-              { img: "csgo.jpg", alt: "Counter Strike" },
-              { img: "DBFZ.jpg", alt: "Dragon Ball Fighterz" },
-              { img: "granblue.jpg", alt: "Granblue" },
-              { img: "guiltyGear.png", alt: "Guilty Gear Strive" },
-              { img: "haloinfinite.jpg", alt: "Halo Infinite" },
-              { img: "streetFighter.png", alt: "Street Fighter 6" },
-              { img: "rocketLeague.jpg", alt: "Rocket League" },
-              { img: "rainbow6.png", alt: "Rainbow Six Siege" },
-              { img: "KOF.jpg", alt: "King of Fighters" },
-              { img: "masterDuel.jpg", alt: "Master Duel" },
-              { img: "MK1.jpg", alt: "Mortal Kombat 1" },
-              { img: "overwatch.jpg", alt: "Overwatch 2" },
-              { img: "skullgirls.png", alt: "Skull Girls" },
-              { img: "sparking zero.jpg", alt: "Sparking Zero" },
-              { img: "tekken8.jpg", alt: "Tekken 8" },
-              { img: "tetrisEffect.jpeg", alt: "Tetris Effect" },
-              { img: "underKnight.jpg", alt: "Under Knight in Birth" },
-              // Add more games
-          ]; %>
           <% games.forEach(game => { %>
-          <div class="game-tile">
-            <img src="/images/GameTiles/<%= game.img %>" alt="<%= game.alt %>" />
-          </div>
+            <div class="game-tile">
+              <a href="/game/<%= game.alt.toLowerCase().replace(/\s+/g, '') %>">
+                <img src="/images/GameTiles/<%= game.img %>" alt="<%= game.alt %>" />
+              </a>
+            </div>
           <% }); %>
         </div>
       </div>
 
       <!-- News Section -->
-      <div class="sidebar">
+      <div id="right-sidebar" class="sidebar">
         <section id="news">
           <h1>Latest News</h1>
           <div class="news-item">
