@@ -39,7 +39,7 @@ body {
 }
 
 #username {
-  font-size: 150%;
+  font-size: 130%;
 }
 
 .profile-menu li {
@@ -117,7 +117,7 @@ body {
 #news {
   background-color: #2a215e;
   padding: 50px 20px;
-  height: 700px;
+  height: 800px;
   width: auto;
   border-radius: 25px;
 }
@@ -147,16 +147,17 @@ body {
 }
 
 @media (max-width: 800px) {
+
   .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 10px;
     margin-top: 30px;
   }
 
   .profile-picture img {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
   }
 
   .header img {
@@ -168,9 +169,6 @@ body {
     font-size: 10px;
   }
 
-  .game-grid {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  }
 }
 @media (max-width: 1070px) and (min-width: 801px) {
   .profile-picture img {
@@ -179,7 +177,7 @@ body {
   }
 
   #username {
-    font-size: 150%;
+    font-size: 100%;
   }
 
   .profile-menu li {
@@ -188,5 +186,32 @@ body {
 
   .game-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  #right-sidebar {
+    display: none;
+  }
+  .profile-picture img {
+    width: 70px;
+    height: 70px;
+  }
+  #username {
+    font-size: 100%;
+  }
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0px;
+  }
+  .profile-menu li {
+    margin: 10px 0px;
+  }
+  .nav-menu {
+    list-style-type: none;
+    display: flex;
+    gap: 15px;
+    padding: 0px 10px;
   }
 }

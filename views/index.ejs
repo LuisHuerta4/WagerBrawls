@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Wager Brawls - Join exciting game tournaments and challenge players in your favorite games." />
+    <meta name="keywords" content="gaming, tournaments, eSports, team play, competitive games, Wager Brawls" />
+    <meta name="author" content="Wager Brawls Team" />
+    <title>Wager Brawls</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="profile-section">
+          <div class="profile-picture">
+            <img src="/images/Assets/profileIcon1.jpg" alt="User Profile" />
+          </div>
+          <ul class="profile-menu">
+            <li id="username">xXBrawlerXx</li>
+            <li>Profile</li>
+            <li>Settings</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Logo and Navbar -->
+        <div class="header">
+          <img src="/images/Assets/logo.png" alt="Wager Brawls Logo" />
+          <nav class="navbar">
+            <ul class="nav-menu">
+              <li>GAMES</li>
+              <li>TOURNAMENT</li>
+              <li>FIND TEAMMATES</li>
+              <li>SUPPORT</li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Game Grid -->
+        <div class="game-grid">
+          <!-- Dynamically render game tiles -->
+          <% games.forEach(game => { %>
+            <div class="game-tile">
+              <a href="/game/<%= game.alt.toLowerCase().replace(/\s+/g, '') %>">
+                <img src="/images/GameTiles/<%= game.img %>" alt="<%= game.alt %>" />
+              </a>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+
+      <!-- News Section -->
+      <div id="right-sidebar" class="sidebar">
+        <section id="news">
+          <h1>Latest News</h1>
+          <div class="news-item">
+            <h3>Game Balance Changes</h3>
+            <p>Clash Royale | October</p>
+            <a href="https://supercell.com/en/games/clashroyale/blog/release-notes/october-balance-changes/" target="_blank" rel="noopener noreferrer">Read more</a>
+            <p>Overwatch | October</p>
+            <a href="https://overwatch.blizzard.com/en-us/news/patch-notes/" target="_blank" rel="noopener noreferrer">Read more</a>
+          </div>
+          <div class="news-item">
+            <h3>Upcoming Events</h3>
+            <p>New York Game Awards | January 23</p>
+            <p>Game Developers Conference | March 18-22</p>
+            <p>PAX East | March 21-24</p>
+            <p>EVO Japan | April 27-29</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
