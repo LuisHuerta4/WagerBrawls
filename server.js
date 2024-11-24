@@ -1,9 +1,14 @@
+// Install node and run npm i in terminal to isntall all dependancies 
 // Run program in dev mode with nodemon: [nodemon server.js]
 // Run program for production: [node server.js]
 const express = require('express');
-const path = require('path');
+const http = require('http'); // Required for Socket.IO
+const { Server } = require('socket.io'); // Importing Socket.IO
+const path = require('path')
 
 const app = express();
+const server = http.createServer(app); // Create HTTP server
+const io = new Server(server); // Attach Socket.IO to the server
 const PORT = process.env.PORT || 3000;
 
 const games = [
@@ -43,11 +48,12 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Routes
 app.get('/', (req, res) => {
-  res.render('index', { games });
+  res.render('home', { games });
 });
 
 // Game-specific route
 app.get('/game/:game', (req, res) => {
+  const currentUser = "Lugi";
   const gameName = req.params.game;
   const game = games.find(g => g.alt.toLowerCase().replace(/\s+/g, '') === gameName);
   if (!game) {
@@ -63,10 +69,47 @@ app.get('/game/:game', (req, res) => {
     { username: 'Player 6', wager: 50, icon: 'profileIcon6.jpg' },
   ];
 
-  res.render('game', { game, players: playersLookingToWager });
+  res.render('game', { game, players: playersLookingToWager, currentUser });
+});
+
+app.get('/chat', (req, res) => {
+  const currentUser = req.query.username; 
+  const recipient = req.query.recipient;  
+  
+  if (!recipient) {
+    return res.status(400).send('Recipient is required');
+  }
+
+  res.render('chat', { username: currentUser, recipient: recipient });
+});
+
+const activeUsers = {}; //stores the usernames and uses the socket ID as the key
+
+// Socket.IO connection
+io.on('connection', (socket) => {
+  console.log('A user connected:', socket.id);
+
+  // Triggered when you join a room
+  socket.on('join room', ({ currentUser, recipient }) => {
+    activeUsers[socket.id] = currentUser;
+    socket.join(recipient);
+    console.log(`${currentUser} joined ${recipient} room`);
+  });
+
+  // Handle user sending a message
+  socket.on('chat message', ({ room, message }) => {
+    const sender = activeUsers[socket.id]; // Get the username of the sender from activeUsers
+    io.to(room).emit('chat message', { sender, message });
+  });
+
+  // Handle disconnection from room
+  socket.on('disconnect', () => {
+    console.log('A user disconnected. ID:', socket.id);
+    delete activeUsers[socket.id];
+  });
 });
 
 // Start server
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });

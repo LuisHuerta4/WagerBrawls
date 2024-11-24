@@ -1,0 +1,41 @@
+.chat-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  #chat-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  
+  #chat-box p {
+    margin: 5px 0;
+  }
+  
+  #chat-form {
+    display: flex;
+  }
+  
+  #message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
