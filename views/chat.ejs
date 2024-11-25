@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="/css/chat.css" />
   </head>
   <body>
+    <div class="header">
+      <img src="/images/Assets/logo.png" alt="Wager Brawls Logo" />
+    </div>
     <div class="chat-container">
-      <h1>Chat with <%= recipient %></h1>
+      <h1>Now Chating With <%= recipient %> . . .</h1>
       <div id="chat-box">
         <!-- Messages will be displayed here -->
       </div>
@@ -30,15 +33,19 @@
 
       // Listen for incoming messages
       socket.on('chat message', ({ sender, message }) => {
-        const messageElement = document.createElement('p');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+
         if (sender === currentUser) {
-          messageElement.style.color = 'blue'; // Current user's messages
+          messageElement.classList.add('current-user'); // Current user's messages
         } else {
-          messageElement.style.color = 'green'; // Recipient's messages
+          messageElement.classList.add('recipient'); // Recipient's messages
         }
-        messageElement.textContent = `${sender}: ${message}`;
+
+        messageElement.textContent = `${message}`;
         chatBox.appendChild(messageElement);
-      });
+        chatBox.scrollTop = chatBox.scrollHeight;
+    });
 
       // Handle the form submission to send a message so that the pagte doesnt have to reload
       chatForm.addEventListener('submit', (e) => {
