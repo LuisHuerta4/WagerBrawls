@@ -1,17 +1,18 @@
 {
-  "name": "wagerbrawls", 
+  "name": "wagerbrawls",
   "version": "1.0.0",
   "description": "A project for playing video games for money",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js", 
-    "dev": "nodemon server.js" 
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
-  "author": "Luis Huerta", 
-  "license": "", 
+  "author": "Luis Huerta",
+  "license": "",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
