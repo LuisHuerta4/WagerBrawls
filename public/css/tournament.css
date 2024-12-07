@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2e236c;
+  font-family: "Russo One", sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header img {
+  max-width: 100%;
+  width: 30vw;
+  height: auto;
+  padding: 20px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #433d8b;
+}
+
+.nav-menu {
+  list-style-type: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-menu li {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.tournament-container {
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+.tournament-container h1 {
+    margin-bottom: 20px;
+}
+
+.bracket-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  align-items: flex-start;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.bracket {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.winners-column {
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 70px; 
+}
+
+.winner {
+  background-color: #433d8b;
+  padding: 10px;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  color: white;
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.match {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background-color: #433d8b;
+  padding: 10px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.player {
+  flex: 1;
+  text-align: center;
+}
+
+.vs {
+  flex: 0;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #1f1d4c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #17153b;
+}
+
+.game-list {
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 20px;
+}
+
+.game-item {
+  background-color: #433d8b;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  width: 250px; 
+}
+
+.game-item:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.game-item img {
+  width: 100%; 
+  border-radius: 10px;
+}
+
+.game-item p {
+  color: white;
+  margin-top: 10px;
+  background-color: #2a215e; 
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.game-item .game-info {
+  background-color: #2a215e; 
+  padding-top: 1px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+}

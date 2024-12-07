@@ -27,7 +27,7 @@ body {
   justify-content: center;
   padding-top: 100px;
   text-align: center;
-  overflow-y: auto; /* Allows sidebar content to scroll if it overflows */
+  overflow-y: auto; 
 }
 
 .main-content {
@@ -47,7 +47,7 @@ body {
   max-width: 100%;
   width: 30vw;
   height: auto;
-  padding: 20px 0px 20px 0px; /*top, right, bot, left*/
+  padding: 20px 0px 20px 0px; 
 }
 
 .navbar {
@@ -71,6 +71,11 @@ body {
   font-size: 1.2rem;
 }
 
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+}
+
 .main-content {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
@@ -78,7 +83,6 @@ body {
 
 .game-info-section {
   padding: 50px 30px 50px 30px;
-  /*top, right, bot, left*/
 }
 
 .game-picture img {
@@ -124,16 +128,24 @@ body {
   object-fit: cover;
 }
 
-.wager-container, .player-container {
+.wager-container, .player-container, .chat-button-container, .wager-chat-container {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
+.wager-chat-container {
+  margin-left: auto; 
+}
+
 .wager-amount {
   color: white;
-  font-size: 16px;
+  font-size: 20px; 
   margin: 0;
+}
+
+.chat-button-container {
+  margin-left: auto; 
 }
 
 .player-room button {
