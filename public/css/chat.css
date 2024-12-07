@@ -66,18 +66,29 @@ h1 {
   max-width: 70%;
   font-size: 0.9em;
   word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
 }
 
 #chat-box .message.current-user {
   background-color: #433d8b;
   color: white;
-  align-self: flex-end; /* Align to the right for current user */
+  align-self: flex-end; 
 }
 
 #chat-box .message.recipient {
   background-color: #2a215e;
   color: white;
-  align-self: flex-start; /* Align to the left for recipient */
+  align-self: flex-start; 
+}
+
+#chat-box .message .profile-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 10px; 
+  object-fit: cover; 
 }
 
 #chat-form {
@@ -105,5 +116,22 @@ button {
 }
 
 button:hover {
+  background-color: #17153b;
+}
+
+.leave-room-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #1f1d4c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.leave-room-button:hover {
   background-color: #17153b;
 }

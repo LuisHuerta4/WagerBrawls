@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tournament Games</title>
+    <link rel="stylesheet" href="/css/tournament.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img src="/images/Assets/logo.png" alt="Wager Brawls Logo" />
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li><a href="/">HOME</a></li>
+          <li><a href="/tournament">TOURNAMENT</a></li>
+          <li>FIND TEAMMATES</li>
+          <li>SUPPORT</li>
+        </ul>
+      </nav>
+    </div>
+    <div class="tournament-container">
+      <h1>Current Tournaments</h1>
+      <div class="game-list">
+        <% games.forEach(game => { %>
+          <div class="game-item">
+            <a href="/tournament/<%= game.alt.toLowerCase().replace(/\s+/g, '') %>">
+              <img src="/images/GameTiles/<%= game.img %>" alt="<%= game.alt %>" />
+              <div class="game-info">
+                <p><%= game.alt %></p>
+                <p>Start Date: December <%= Math.floor(Math.random() * 31) + 1 %></p>
+                <p>Time: <%= Math.floor(Math.random() * 12) + 1 %>:00 pm PST</p> 
+              </div>
+            </a>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </body>
+</html>

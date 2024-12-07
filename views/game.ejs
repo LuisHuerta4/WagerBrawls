@@ -29,8 +29,8 @@
           <img src="/images/Assets/logo.png" alt="Wager Brawls Logo" />
           <nav class="navbar">
             <ul class="nav-menu">
-              <li>GAMES</li>
-              <li>TOURNAMENT</li>
+              <li><a href="/">HOME</a></li>
+              <li><a href="/tournament">TOURNAMENT</a></li>
               <li>FIND TEAMMATES</li>
               <li>SUPPORT</li>
             </ul>
@@ -44,16 +44,16 @@
           <% players.forEach(player => { %>
 
             <div class="player-room">
-              <a href="/chat?username=<%= currentUser %>&recipient=<%= player.username %>">
-                <div class="player-container">
-                  <img src="/images/Assets/<%= player.icon %>" alt="User Profile" />
-                  <p class="player-username"><%= player.username %></p> 
-                </div> 
-                <div class="wager-container">
-                  <p class="wager-amount">$<%= player.wager %></p>
+              <div class="player-container">
+                <img src="/images/Assets/<%= player.icon %>" alt="User Profile" />
+                <p class="player-username"><%= player.username %></p> 
+              </div> 
+              <div class="wager-chat-container">
+                <p class="wager-amount">$<%= player.wager %></p>
+                <a href="/chat?username=<%= currentUser %>&recipient=<%= player.username %>">
                   <button>Chat</button>
-                </div>
-              </a>
+                </a>
+              </div>
             </div>
 
           <% }); %>

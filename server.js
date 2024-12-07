@@ -39,6 +39,34 @@ const games = [
   { img: "underKnight.jpg", alt: "Under Knight in Birth" },
 ];
 
+const tournamentGames = [
+  { img: "fortnite.jpg", alt: "Fortnite" },
+  { img: "streetfighter.png", alt: "Street Fighter 6" },
+  { img: "rocketLeague.jpg", alt: "Rocket League" },
+  { img: "2XKO.png", alt: "2XKO" },
+];
+
+const playersLookingToWager = [ //Hard values unless we use a database
+  { username: 'Player 1', wager: 10, icon: 'profileIcon1.jpg' },
+  { username: 'Player 2', wager: 20, icon: 'profileIcon2.jpg' },
+  { username: 'Player 3', wager: 15, icon: 'profileIcon3.jpg' },
+  { username: 'Player 4', wager: 5, icon: 'profileIcon4.jpg' },
+  { username: 'Player 5', wager: 25, icon: 'profileIcon5.jpg' },
+  { username: 'Player 6', wager: 50, icon: 'profileIcon6.jpg' },
+];
+
+const bracket = [
+  { player1: 'Player 1', player2: 'Player 2' },
+  { player1: 'Player 3', player2: 'Player 4' },
+  { player1: 'Player 5', player2: 'Player 6' },
+  { player1: 'Player 7', player2: 'Player 8' },
+  { player1: 'Player 9', player2: 'Player 10' },
+  { player1: 'Player 11', player2: 'Player 12' },
+  // ...more matches...
+];
+
+const username = "xXBrawlerXx"; // Replace with actual user data
+
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -48,39 +76,51 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Routes
 app.get('/', (req, res) => {
-  res.render('home', { games });
+  res.render('home', { games, username });
 });
 
 // Game-specific route
 app.get('/game/:game', (req, res) => {
-  const currentUser = "Lugi";
+  const currentUser = username;
   const gameName = req.params.game;
   const game = games.find(g => g.alt.toLowerCase().replace(/\s+/g, '') === gameName);
   if (!game) {
     return res.status(404).send("Game not found");
   }
 
-  const playersLookingToWager = [ //Hard values unless we use a database
-    { username: 'Player 1', wager: 10, icon: 'profileIcon1.jpg' },
-    { username: 'Player 2', wager: 20, icon: 'profileIcon2.jpg' },
-    { username: 'Player 3', wager: 15, icon: 'profileIcon3.jpg' },
-    { username: 'Player 4', wager: 5, icon: 'profileIcon4.jpg' },
-    { username: 'Player 5', wager: 25, icon: 'profileIcon5.jpg' },
-    { username: 'Player 6', wager: 50, icon: 'profileIcon6.jpg' },
-  ];
-
   res.render('game', { game, players: playersLookingToWager, currentUser });
+});
+
+app.get('/tournament', (req, res) => {
+  res.render('tournament', { games: tournamentGames });
+});
+
+app.get('/tournament/:game', (req, res) => {
+  const gameName = req.params.game;
+  const game = tournamentGames.find(g => g.alt.toLowerCase().replace(/\s+/g, '') === gameName);
+  if (!game) {
+    return res.status(404).send("Game not found");
+  }
+  res.render('tournament-game', { game, bracket });
+});
+
+app.post('/enter-tournament/:game', (req, res) => {
+  const newPlayer = username; 
+  bracket.push({ player1: newPlayer, player2: 'TBD' });
+  const gameName = req.params.game;
+  res.redirect(`/tournament/${gameName}`);
 });
 
 app.get('/chat', (req, res) => {
   const currentUser = req.query.username; 
   const recipient = req.query.recipient;  
+  const gameName = req.query.gameName; // Get the game name from the query parameters
   
   if (!recipient) {
     return res.status(400).send('Recipient is required');
   }
 
-  res.render('chat', { username: currentUser, recipient: recipient });
+  res.render('chat', { username: currentUser, recipient: recipient, gameName });
 });
 
 const activeUsers = {}; //stores the usernames and uses the socket ID as the key

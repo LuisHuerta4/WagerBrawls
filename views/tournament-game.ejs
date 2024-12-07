@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= game.alt %> Tournament Bracket</title>
+    <link rel="stylesheet" href="/css/tournament.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img src="/images/Assets/logo.png" alt="Wager Brawls Logo" />
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li><a href="/">HOME</a></li>
+          <li><a href="/tournament">TOURNAMENT</a></li>
+          <li>FIND TEAMMATES</li>
+          <li>SUPPORT</li>
+        </ul>
+      </nav>
+    </div>
+    <div class="tournament-container">
+      <h1><%= game.alt %> Tournament Bracket</h1>
+      <div class="bracket-container">
+        <div class="bracket">
+          <!-- Dynamically render tournament bracket -->
+          <% for (let i = 0; i < bracket.length; i += 2) { %>
+            <div class="round">
+              <div class="match">
+                <div class="player"><%= bracket[i].player1 %></div>
+                <div class="vs">vs</div>
+                <div class="player"><%= bracket[i].player2 %></div>
+              </div>
+              <% if (bracket[i + 1]) { %>
+                <div class="match">
+                  <div class="player"><%= bracket[i + 1].player1 %></div>
+                  <div class="vs">vs</div>
+                  <div class="player"><%= bracket[i + 1].player2 %></div>
+                </div>
+              <% } %>
+            </div>
+          <% } %>
+        </div>
+        <div class="winners-column">
+          <% for (let i = 0; i < bracket.length / 2; i++) { %>
+            <div class="winner">
+              <p>TBD vs TBD</p>
+            </div>
+          <% } %>
+        </div>
+      </div>
+      <form action="/enter-tournament/<%= game.alt.toLowerCase().replace(/\s+/g, '') %>" method="POST">
+        <button type="submit">Enter Tournament</button>
+      </form>
+    </div>
+  </body>
+</html>

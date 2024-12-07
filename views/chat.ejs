@@ -19,6 +19,9 @@
         <input type="text" id="message-input" placeholder="Type a message..." required autocomplete="off" />
         <button type="submit">Send</button>
       </form>
+      <a href="/">
+        <button class="leave-room-button">Leave Room</button>
+      </a>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -28,6 +31,7 @@
       const messageInput = document.getElementById('message-input');
       const currentUser = "<%= username %>"; 
       const recipient = "<%= recipient %>";
+      const profileIcon = "/images/Assets/profileIcon1.jpg"; 
 
       socket.emit('join room', { currentUser, recipient });
 
@@ -36,13 +40,21 @@
         const messageElement = document.createElement('div');
         messageElement.classList.add('message');
 
+        const textElement = document.createElement('span');
+        textElement.textContent = `${message}`;
+        messageElement.appendChild(textElement);
+
         if (sender === currentUser) {
           messageElement.classList.add('current-user'); // Current user's messages
+          const imgElement = document.createElement('img');
+          imgElement.src = profileIcon;
+          imgElement.alt = "User Profile";
+          imgElement.classList.add('profile-icon');
+          messageElement.appendChild(imgElement);
         } else {
           messageElement.classList.add('recipient'); // Recipient's messages
         }
 
-        messageElement.textContent = `${message}`;
         chatBox.appendChild(messageElement);
         chatBox.scrollTop = chatBox.scrollHeight;
     });
