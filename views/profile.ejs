@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= username %>'s Profile</title>
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+    />
+  </head>
+  <body>
+    <div class="profile-container">
+      <div class="profile-header">
+        <img src="/images/Assets/<%= profilePicture %>" alt="<%= username %>'s Profile Picture" class="profile-picture" />
+        <h1><%= username %></h1>
+      </div>
+      <div class="top-games">
+        <h2>Top 3 Games</h2>
+        <ul>
+          <% topGames.forEach(game => { %>
+            <li>
+              <% 
+                const gameImage = games.find(g => g.alt.toLowerCase() === game.toLowerCase());
+                const gameImgSrc = gameImage ? gameImage.img : 'default.jpg';
+              %>
+              <img src="/images/GameTiles/<%= gameImgSrc %>" alt="<%= game %>" class="game-picture" />
+            </li>
+          <% }); %>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

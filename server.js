@@ -65,7 +65,38 @@ const bracket = [
   // ...more matches...
 ];
 
-const username = "xXBrawlerXx"; // Replace with actual user data
+const username = "xXBrawlerXx"; // Username of the current user
+
+const profiles = {
+  'xXBrawlerXx': {
+    profilePicture: 'profileIcon1.jpg',
+    topGames: ['Fortnite', 'Valorant', 'Clash Royale']
+  },
+  'Player 1': {
+    profilePicture: 'profileIcon1.jpg',
+    topGames: ['Rocket League', 'Overwatch 2', 'Halo Infinite']
+  },
+  'Player 2': {
+    profilePicture: 'profileIcon2.jpg',
+    topGames: ['Street Fighter 6', 'Tekken 8', 'Mortal Kombat 1']
+  },
+  'Player 3': {
+    profilePicture: 'profileIcon3.jpg',
+    topGames: ['Brawlhalla', 'Guilty Gear Strive', 'Dragon Ball Fighterz']
+  },
+  'Player 4': {
+    profilePicture: 'profileIcon4.jpg',
+    topGames: ['Counter Strike', 'Rainbow Six Siege', 'Valorant']
+  },
+  'Player 5': {
+    profilePicture: 'profileIcon5.jpg',
+    topGames: ['Master Duel', 'Granblue', 'Skull Girls']
+  },
+  'Player 6': {
+    profilePicture: 'profileIcon6.jpg',
+    topGames: ['Tetris Effect', 'Under Knight in Birth', 'Aether']
+  },
+};
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -121,6 +152,15 @@ app.get('/chat', (req, res) => {
   }
 
   res.render('chat', { username: currentUser, recipient: recipient, gameName });
+});
+
+app.get('/profile/:username', (req, res) => {
+  const username = req.params.username;
+  const profile = profiles[username];
+  if (!profile) {
+    return res.status(404).send("Profile not found");
+  }
+  res.render('profile', { username, profilePicture: profile.profilePicture, topGames: profile.topGames, games });
 });
 
 const activeUsers = {}; //stores the usernames and uses the socket ID as the key

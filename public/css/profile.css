@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2e236c;
+  font-family: "Russo One", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.profile-container {
+  background-color: #433d8b;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  width: 300px;
+}
+
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.top-games {
+  margin-top: 20px;
+}
+
+.top-games ul {
+  list-style-type: none;
+}
+
+.top-games li {
+  background-color: #2a215e;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.game-picture {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.game-picture:hover {
+  transform: scale(1.1);
+}
