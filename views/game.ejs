@@ -31,7 +31,7 @@
             <ul class="nav-menu">
               <li><a href="/">HOME</a></li>
               <li><a href="/tournament">TOURNAMENT</a></li>
-              <li>FIND TEAMMATES</li>
+              <li><a href="/profile/<%= currentUser %>">PROFILE</a></li>
               <li>SUPPORT</li>
             </ul>
           </nav>
@@ -45,7 +45,9 @@
 
             <div class="player-room">
               <div class="player-container">
-                <img src="/images/Assets/<%= player.icon %>" alt="User Profile" />
+                <a href="/profile/<%= player.username %>">
+                  <img src="/images/Assets/<%= player.icon %>" alt="User Profile" />
+                </a>
                 <p class="player-username"><%= player.username %></p> 
               </div> 
               <div class="wager-chat-container">

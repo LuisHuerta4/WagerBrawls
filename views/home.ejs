@@ -19,12 +19,14 @@
       <div class="sidebar">
         <div class="profile-section">
           <div class="profile-picture">
-            <img src="/images/Assets/profileIcon1.jpg" alt="User Profile" />
+            <a href="/profile/<%= username %>">
+              <img src="/images/Assets/mainProfileIcon.jpg" alt="User Profile" />
+            </a>
           </div>
           <ul class="profile-menu">
             <li id="username"><%= username %></li>
-            <li>Profile</li>
-            <li>Settings</li>
+            <li>Wallet: $<%= walletAmount %> <button class="wallet-button">+</button></li>
+            <li>Brawl Points: <%= brawlPoints %> <button class="wallet-button">+</button></li>
           </ul>
         </div>
       </div>
@@ -38,7 +40,7 @@
             <ul class="nav-menu">
               <li>GAMES</li>
               <li><a href="/tournament">TOURNAMENT</a></li>
-              <li>FIND TEAMMATES</li>
+              <li><a href="/profile/<%= username %>">PROFILE</a></li>
               <li>SUPPORT</li>
             </ul>
           </nav>

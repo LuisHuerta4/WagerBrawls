@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= username %>'s Profile</title>
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+    />
+  </head>
+  <body>
+    <div class="profile-container">
+      <div class="profile-header" style="background-image: url('/images/Assets/<%= profileCard %>');">
+        <img src="/images/Assets/<%= profilePicture %>" alt="<%= username %>'s Profile Picture" class="profile-picture" />
+        <h1><%= username %></h1>
+      </div>
+      <div class="content">
+        <div class="left-section box">
+          <div class="top-games">
+            <h2>Most Played Games</h2>
+            <ul>
+              <% topGames.forEach((game, index) => { %>
+                <li>
+                  <% 
+                    const gameImage = games.find(g => g.alt.toLowerCase() === game.toLowerCase());
+                    const gameImgSrc = gameImage ? gameImage.img : 'default.jpg';
+                    const rankImgSrc = ranks[index] || 'defaultRank.png';
+                  %>
+                  <img src="/images/GameTiles/<%= gameImgSrc %>" alt="<%= game %>" class="game-picture" />
+                  <img src="/images/Assets/Ranks/<%= rankImgSrc %>" alt="Rank" class="rank-picture" />
+                </li>
+              <% }); %>
+            </ul>
+          </div>
+        </div>
+        <div class="right-section box">
+          <div class="reputation-bar">
+            <h2>Player Reputation</h2>
+            <div class="bar">
+              <div class="arrow" style="left: <%= reputation %>%"></div>
+            </div>
+          </div>
+          <div class="reputation-bar">
+            <h2>Official Reputation</h2>
+            <div class="bar">
+              <div class="arrow" style="left: <%= reputation %>%"></div>
+            </div>
+          </div>
+          <div class="stats">
+            <h2>Total Earnings: $<%= totalEarnings %></h2>
+            <h2>Total Wins: <%= totalWins %></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

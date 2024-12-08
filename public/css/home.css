@@ -21,9 +21,16 @@ body {
   color: white;
   display: flex;
   justify-content: center;
-  padding-top: 100px;
+  align-items: center; 
   text-align: center;
   overflow-y: auto; 
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 200px;
 }
 
 .profile-picture img {
@@ -31,19 +38,30 @@ body {
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Added shadow */
 }
 
 .profile-menu {
   list-style-type: none;
-  margin-top: 50px;
 }
 
 #username {
   font-size: 130%;
+  text-shadow: 2px 2px 4px #000000; 
 }
 
 .profile-menu li {
   margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+.profile-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.profile-menu a:hover {
+  text-decoration: underline;
 }
 
 .main-content {
@@ -146,9 +164,44 @@ body {
   padding-bottom: 10px;
 }
 
+.news-item a {
+  color: #ffcd04; 
+  text-decoration: none;
+}
+
+.news-item a:hover {
+  text-decoration: underline; 
+}
+
 .main-content {
   scrollbar-width: thin; 
   scrollbar-color: rgba(0, 0, 0, 0.4) transparent; 
+}
+
+.wallet-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.wallet-section p {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.wallet-button {
+  background-color: #433d8b;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.wallet-button:hover {
+  background-color: #2e236c;
 }
 
 @media (max-width: 800px) {
@@ -219,4 +272,14 @@ body {
     gap: 15px;
     padding: 0px 10px;
   }
+}
+
+#username,
+.nav-menu li,
+.nav-menu a,
+.wallet-section p,
+.news-item h3,
+.news-item p,
+.news-item a {
+  text-shadow: 2px 2px 4px #000000;
 }

@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #17153b;
+  font-family: "Russo One", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100vh;
+  padding: 20px; 
+}
+
+.profile-container {
+  background-color: #2e236c;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  width: 100%; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  margin-top: -50px; 
+}
+
+.profile-header {
+  margin-bottom: 20px;
+  padding-top: 20px; 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  border-radius: 10px; 
+}
+
+.profile-header h1 {
+  text-shadow: 2px 2px 4px #000000; 
+}
+
+.profile-header h1,
+.top-games h2,
+.top-games li p,
+.reputation-bar h2,
+.stats h2 {
+  text-shadow: 2px 2px 4px #000000; 
+}
+
+.profile-picture {
+  width: 200px; 
+  height: 200px; 
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.top-games {
+  margin-top: 20px;
+}
+
+.top-games ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.top-games li {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-games li p {
+  margin-left: 10px;
+}
+
+.game-picture {
+  width: 40%; 
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.game-picture:hover {
+  transform: scale(1.05); 
+}
+
+.rank-picture {
+  width: 20%; 
+  border-radius: 10px;
+  margin-left: 20px; 
+}
+
+.reputation-bar {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.reputation-bar .bar {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to right, red, yellow, green);
+  position: relative;
+  border-radius: 10px;
+}
+
+.reputation-bar .arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+  position: absolute;
+  top: -10px; 
+}
+
+.reputation-bar h2 {
+  margin-bottom: 20px; 
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; 
+}
+
+.left-section {
+  width: 60%;
+}
+
+.right-section {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px; 
+  margin-right: 10px;
+}
+
+.stats {
+  margin-top: 100px; 
+  text-align: center;
+}
+
+.stats h2 {
+  margin-bottom: 20px; 
+  font-size: 1.7em; 
+}
+
+.box {
+  background-color: #383275;
+  padding: 20px;
+  border-radius: 10px;
+}
