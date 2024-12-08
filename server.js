@@ -69,32 +69,46 @@ const username = "xXBrawlerXx"; // Username of the current user
 
 const profiles = {
   'xXBrawlerXx': {
-    profilePicture: 'profileIcon1.jpg',
-    topGames: ['Fortnite', 'Valorant', 'Clash Royale']
+    profilePicture: 'mainProfileIcon.jpg',
+    topGames: ['Fortnite', 'Valorant', 'Clash Royale'],
+    ranks: ['unreal.png', 'valDiamond.png', 'clashGold.png'],
+    cardBackground: 'mainProfileCard.jpg' 
   },
   'Player 1': {
     profilePicture: 'profileIcon1.jpg',
-    topGames: ['Rocket League', 'Overwatch 2', 'Halo Infinite']
+    topGames: ['Rocket League', 'Overwatch 2', 'Halo Infinite'],
+    ranks: ['RLGold.png', 'overwatchMaster.png', 'halo.png'],
+    cardBackground: 'profileCard1.jpg' 
   },
   'Player 2': {
     profilePicture: 'profileIcon2.jpg',
-    topGames: ['Street Fighter 6', 'Tekken 8', 'Mortal Kombat 1']
+    topGames: ['Street Fighter 6', 'Tekken 8', 'Mortal Kombat 1'],
+    ranks: ['SF6Master.png', 'TekkenBattleRuler.png', 'defaultRank.png'],
+    cardBackground: 'profileCard2.jpg' 
   },
   'Player 3': {
     profilePicture: 'profileIcon3.jpg',
-    topGames: ['Brawlhalla', 'Guilty Gear Strive', 'Dragon Ball Fighterz']
+    topGames: ['Brawlhalla', 'Guilty Gear Strive', 'Dragon Ball Fighterz'],
+    ranks: ['BrawlhallaDiamond.png', 'defaultRank.png', 'defaultRank.png'],
+    cardBackground: 'profileCard3.jpg' 
   },
   'Player 4': {
     profilePicture: 'profileIcon4.jpg',
-    topGames: ['Counter Strike', 'Rainbow Six Siege', 'Valorant']
+    topGames: ['Counter Strike', 'Rainbow Six Siege', 'Valorant'],
+    ranks: ['CSGO.png', 'R6Champion.png', 'ValorantEmerald.png'],
+    cardBackground: 'profileCard4.jpg'
   },
   'Player 5': {
     profilePicture: 'profileIcon5.jpg',
-    topGames: ['Master Duel', 'Granblue', 'Skull Girls']
+    topGames: ['Master Duel', 'Granblue', 'Skull Girls'],
+    ranks: ['MDDIamond.png', 'defaultRank.png', 'defaultRank.png'],
+    cardBackground: 'profileCard5.jpg' 
   },
   'Player 6': {
     profilePicture: 'profileIcon6.jpg',
-    topGames: ['Tetris Effect', 'Under Knight in Birth', 'Aether']
+    topGames: ['Tetris Effect', 'Under Knight in Birth', 'Aether'],
+    ranks: ['defaultRank.png', 'defaultRank.png', 'defaultRank.png'],
+    cardBackground: 'profileCard6.jpg' 
   },
 };
 
@@ -107,7 +121,9 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Routes
 app.get('/', (req, res) => {
-  res.render('home', { games, username });
+  const walletAmount = 100; // Example wallet amount
+  const brawlPoints = 50; // Example brawl points amount
+  res.render('home', { games, username, walletAmount, brawlPoints });
 });
 
 // Game-specific route
@@ -123,7 +139,7 @@ app.get('/game/:game', (req, res) => {
 });
 
 app.get('/tournament', (req, res) => {
-  res.render('tournament', { games: tournamentGames });
+  res.render('tournament', { games: tournamentGames, username });
 });
 
 app.get('/tournament/:game', (req, res) => {
@@ -132,7 +148,7 @@ app.get('/tournament/:game', (req, res) => {
   if (!game) {
     return res.status(404).send("Game not found");
   }
-  res.render('tournament-game', { game, bracket });
+  res.render('tournament-game', { game, bracket, username });
 });
 
 app.post('/enter-tournament/:game', (req, res) => {
@@ -160,7 +176,11 @@ app.get('/profile/:username', (req, res) => {
   if (!profile) {
     return res.status(404).send("Profile not found");
   }
-  res.render('profile', { username, profilePicture: profile.profilePicture, topGames: profile.topGames, games });
+  const reputation = 75; 
+  const totalEarnings = 1250; 
+  const totalWins = 57; 
+  const ranks = profile.ranks; 
+  res.render('profile', { username, profilePicture: profile.profilePicture, topGames: profile.topGames, games, reputation, profileCard: profile.cardBackground, totalEarnings, totalWins, ranks });
 });
 
 const activeUsers = {}; //stores the usernames and uses the socket ID as the key
