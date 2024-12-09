@@ -137,10 +137,11 @@ body, h1, h2, h3, p, li, button {
   gap: 30px;
   align-items: center;
   position: absolute;
-  top: 20%;
-  left: 10%;
+  top: 10%;
+  left: 15%;
   width: 500px;
   max-width: 90%;
+  padding-bottom: 30px;
 }
 
 .left-sidebar h2 {

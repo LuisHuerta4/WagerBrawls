@@ -68,10 +68,10 @@ const games = [
 ];
 
 const tournamentGames = [
-  { img: "fortnite.jpg", alt: "Fortnite" },
-  { img: "streetfighter.png", alt: "Street Fighter 6" },
-  { img: "rocketLeague.jpg", alt: "Rocket League" },
-  { img: "2XKO.png", alt: "2XKO" },
+  { img: "fortnite.jpg", alt: "Fortnite", entryFee: 10 },
+  { img: "streetfighter.png", alt: "Street Fighter 6", entryFee: 10 },
+  { img: "rocketLeague.jpg", alt: "Rocket League", entryFee: 10 },
+  { img: "2XKO.png", alt: "2XKO", entryFee: 10 },
 ];
 
 const playersLookingToWager = [ //Hard values unless we use a database
