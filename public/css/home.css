@@ -283,3 +283,129 @@ body {
 .news-item a {
   text-shadow: 2px 2px 4px #000000;
 }
+
+ /*start of shop styling*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #2a215e;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 10px;
+  color: #2a215e;
+}
+
+.modal-content button {
+  background-color: #433d8b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.modal-content button:hover {
+  background-color: #2e236c;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.item-tile {
+  background-color: #2a215e;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.item-tile img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.item-tile h3 {
+  color: #968ef8;
+  margin-bottom: 10px;
+}
+
+.item-tile p {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.buy-button {
+  background-color: #433d8b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.buy-button:hover {
+  background-color: #2e236c;
+}
+
+.shop-items h1 {
+  text-align: center;
+  color: #968ef8;
+  margin-top: 20px;
+}
+
+.brawl-points {
+  text-align: center;
+  color: white;
+  font-size: 1.7rem;
+}
+
+/* Image Modal */
+#imageModal .modal-content {
+  width: 90%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 10px;
+  padding: 0;
+  margin-left: 35%;
+}
+
+#imageModal img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
