@@ -58,11 +58,12 @@ body {
 
 .top-games {
   margin-top: 20px;
+  padding: 4px;
 }
 
 .top-games ul {
   list-style-type: none;
-  padding: 0;
+  padding: 5;
 }
 
 .top-games li {

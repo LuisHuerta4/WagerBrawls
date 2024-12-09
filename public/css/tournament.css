@@ -153,12 +153,12 @@ button:hover {
 
 .game-item img {
   width: 100%; 
-  border-radius: 10px;
+  border-radius: 11px;
 }
 
 .game-item p {
   color: white;
-  margin-top: 10px;
+  margin-top: 11px;
   background-color: #2a215e; 
   padding: 5px;
   border-radius: 5px;
