@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results</title>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/results.css" />
+  </head>
+  <body>
+    <div class="header">
+        <img src="/images/Assets/logo.png" alt="Wager Brawls Logo" />
+    </div>
+    <div class="left-sidebar">
+        <div class="game-image-box">
+        <img src="/images/GameTiles/<%= gameImg %>" alt="<%= gameName %>" class="game-picture">
+        </div>
+        <div class="instructions-box">
+        <h2>Please begin your match</h2>
+        <p>Once your match has concluded please follow the following steps:</p>
+        <ol>
+            <li>Press "vote for winner"</li>
+            <li>Honestly vote for the winner of the match</li>
+            <li>In cases of untruthful voting, upload a screenshot or link to video clip for proof of winner</li>
+            <li>Rate your wagering experience</li>
+        </ol>
+        </div>
+        <div class="warning-box">
+          <h2>Warning</h2>
+          <p>The following will lead to reduced account rating and a potential banning from using our site:</p>
+          <ul>
+            <li>Leaving Early</li>
+            <li>Unsportsmanlike Conduct</li>
+            <li>Harmful or degrading speech</li>
+            <li>Failure to respond truthfully</li>
+          </ul>
+        </div>
+        <div class="security-box">
+        <h2>Extra Security</h2>
+        <p>To ensure extra security when wagering, feel free to stream your games on any streaming platform so your VODs can be reviewed in case of foul play.</p>
+        </div>
+    </div>
+    <div class="right-sidebar">
+        <div class="vote-box" id="vote-box">
+        <button class="vote-button" id="vote-for-winner-button">Vote for Winner</button>
+        <div class="circle-container">
+          <div class="circle"></div>
+          <div class="circle green-circle"></div>
+        </div>
+        </div>
+    </div>
+    <script>
+      document.getElementById('vote-for-winner-button').addEventListener('click', () => {
+        const voteBox = document.getElementById('vote-box');
+        voteBox.innerHTML = `
+          <div class="player-vote-container">
+            <div class="player-vote">
+              <img src="/images/Assets/<%= currentUserProfilePicture %>" alt="User Profile" class="profile-icon">
+              <p class="player-username" id="current-user-username"><%= username %></p>
+              <div class="circle-container">
+                <div class="circle" id="current-user-circle"></div>
+                <div class="circle"></div>
+              </div>
+              <button class="vote-button" onclick="toggleVote('current-user-circle', 'recipient-circle', '<%= username %>', false)">Vote</button>
+            </div>
+            <div class="player-vote">
+              <img src="/images/Assets/<%= recipientProfilePicture %>" alt="Recipient Profile" class="profile-icon">
+              <p class="player-username" id="recipient-username"><%= recipient %></p>
+              <div class="circle-container">
+                <div class="circle" id="recipient-circle"></div>
+                <div class="circle green-circle"></div> <!-- One green circle -->
+              </div>
+              <button class="vote-button" onclick="toggleVote('recipient-circle', 'current-user-circle', '<%= recipient %>', true)">Vote</button>
+            </div>
+          </div>
+          <div class="rating-container">
+            <h3>Rate Your Experience</h3>
+            <div class="diamonds">
+              <div class="diamond" onclick="rateExperience(1)"></div>
+              <div class="diamond" onclick="rateExperience(2)"></div>
+              <div class="diamond" onclick="rateExperience(3)"></div>
+              <div class="diamond" onclick="rateExperience(4)"></div>
+              <div class="diamond" onclick="rateExperience(5)"></div>
+            </div>
+          </div>
+          <div class="return-container" style="display: none;">
+            <div class="file-upload-container" style="display: none;">
+              <h2>Submit Proof</h2>
+              <input type="file" id="proof-file" />
+            </div>
+            <h2 id="winner-text" class="winner-text"></h2>
+            <h3>Thanks for brawling</h3>
+            <button class="return-button" onclick="window.location.href='/'">Submit and return to home</button>
+          </div>
+        `;
+      });
+
+      function toggleVote(circleId, oppositeCircleId, username, isRecipient) {
+        const circle = document.getElementById(circleId);
+        const oppositeCircle = document.getElementById(oppositeCircleId);
+        circle.classList.toggle('green-circle');
+        oppositeCircle.classList.remove('green-circle');
+        updateReturnButton(username, isRecipient);
+      }
+
+      function rateExperience(rating) {
+        const diamonds = document.querySelectorAll('.diamond');
+        diamonds.forEach((diamond, index) => {
+          if (index < rating) {
+            diamond.classList.add('purple-diamond');
+          } else {
+            diamond.classList.remove('purple-diamond');
+          }
+        });
+      }
+
+      function submitRating() {
+        alert('Thank you for your rating!');
+      }
+
+      function updateReturnButton(username, isRecipient) {
+        const returnContainer = document.querySelector('.return-container');
+        const winnerText = document.getElementById('winner-text');
+        const fileUploadContainer = document.querySelector('.file-upload-container');
+        if (isRecipient) {
+          winnerText.textContent = `Winner: ${username}`;
+          winnerText.style.color = 'yellow'; 
+          fileUploadContainer.style.display = 'none'; 
+        } else {
+          winnerText.textContent = "Winner will be decided soon based on submission. Please rate your experience and return to the home screen";
+          winnerText.style.color = 'white'; 
+          fileUploadContainer.style.display = 'block'; 
+        }
+        returnContainer.style.display = 'block'; 
+      }
+
+      function submitProof() {
+        const proofFile = document.getElementById('proof-file').files[0];
+        if (proofFile) {
+          alert('Proof submitted successfully!');
+        } else {
+          alert('Please select a file to submit.');
+        }
+      }
+    </script>
+  </body>
+</html>

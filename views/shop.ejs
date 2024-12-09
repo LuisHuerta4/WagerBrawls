@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Wager Brawls - Join exciting game tournaments and challenge players in your favorite games." />
-    <meta name="keywords" content="gaming, tournaments, eSports, team play, competitive games, Wager Brawls" />
+    <meta name="description" content="Wager Brawls - Shop for exclusive items and upgrades." />
+    <meta name="keywords" content="gaming, shop, items, upgrades, Wager Brawls" />
     <meta name="author" content="Wager Brawls Team" />
-    <title>Wager Brawls</title>
+    <title>Wager Brawls Shop</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
       rel="stylesheet"
@@ -47,39 +47,29 @@
           </nav>
         </div>
 
-        <!-- Game Grid -->
-        <div class="game-grid">
-          <!-- Dynamically render game tiles -->
-          <% games.forEach(game => { %>
-            <div class="game-tile">
-              <a href="/game/<%= game.alt.toLowerCase().replace(/\s+/g, '') %>">
-                <img src="/images/GameTiles/<%= game.img %>" alt="<%= game.alt %>" />
-              </a>
-            </div>
-          <% }); %>
+        <!-- Shop Items -->
+        <div class="shop-items">
+          <h1>Shop</h1>
+          <p class="brawl-points">Brawl Points: <%= brawlPoints %></p>
+          <div class="item-grid">
+            <!-- Dynamically render shop items -->
+            <% shopItems.forEach(item => { %>
+              <div class="item-tile">
+                <img src="/images/Assets/<%= item.img %>" alt="<%= item.name %>" onclick="openImageModal('/images/Assets/<%= item.img %>')" />
+                <h3><%= item.name %></h3>
+                <p>Price: <%= item.price %> BP</p>
+                <button class="buy-button">Buy</button>
+              </div>
+            <% }); %>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- News Section -->
-      <div id="right-sidebar" class="sidebar">
-        <section id="news">
-          <h1>Latest News</h1>
-          <div class="news-item">
-            <h3>Game Balance Changes</h3>
-            <p>Clash Royale | October</p>
-            <a href="https://supercell.com/en/games/clashroyale/blog/release-notes/october-balance-changes/" target="_blank" rel="noopener noreferrer">Read more</a>
-            <p>Overwatch | December</p>
-            <a href="https://overwatch.blizzard.com/en-us/news/patch-notes/" target="_blank" rel="noopener noreferrer">Read more</a>
-          </div>
-          <div class="news-item">
-            <h3>Upcoming Events</h3>
-            <p>New York Game Awards | January 23</p>
-            <p>Game Developers Conference | March 18-22</p>
-            <p>PAX East | March 21-24</p>
-            <p>EVO Japan | April 27-29</p>
-          </div>
-        </section>
-      </div>
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeImageModal()">&times;</span>
+      <img class="modal-content" id="fullImage">
     </div>
 
     <!-- Payment Modal -->
@@ -94,7 +84,7 @@
       </div>
     </div>
 
-    <script src="https://js.stripe.com/v3/"></script> <!-- Stripe for when we incorporate payment proccessing -->
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
       function openModal() {
         document.getElementById('paymentModal').style.display = 'block';
@@ -104,9 +94,21 @@
         document.getElementById('paymentModal').style.display = 'none';
       }
 
+      function openImageModal(src) {
+        document.getElementById('imageModal').style.display = 'block';
+        document.getElementById('fullImage').src = src;
+      }
+
+      function closeImageModal() {
+        document.getElementById('imageModal').style.display = 'none';
+      }
+
       window.onclick = function(event) {
         if (event.target == document.getElementById('paymentModal')) {
           closeModal();
+        }
+        if (event.target == document.getElementById('imageModal')) {
+          closeImageModal();
         }
       }
 

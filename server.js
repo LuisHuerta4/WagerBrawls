@@ -143,6 +143,23 @@ const profiles = {
   },
 };
 
+const shopItems = [
+  { img: "shopCard1.jpg", name: "Dark Night", price: 10 },
+  { img: "shopCard2.jpg", name: "Pink Horizon", price: 5 },
+  { img: "shopCard3.jpg", name: "Blood Stars", price: 5 },
+  { img: "shopCard4.jpg", name: "Est Japan", price: 20 },
+  { img: "shopCard5.jpg", name: "Lazer Reflect", price: 10 },
+  { img: "shopCard6.jpg", name: "Spray Paint", price: 5 },
+  { img: "shopCard7.jpg", name: "Triangularity", price: 15 },
+  { img: "shopCard8.jpg", name: "Cherry Blossom", price: 30 },
+  { img: "shopCard9.jpg", name: "Wave", price: 10 },
+  { img: "shopCard10.jpg", name: "Neon City", price: 15 },
+  { img: "shopCard11.jpg", name: "Recycled Home", price: 5 },
+  { img: "shopCard12.jpg", name: "Tokyo", price: 10 },
+  { img: "shopCard13.jpg", name: "Pastel Kittens", price: 15 },
+  // ...more items...
+];
+
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -194,11 +211,20 @@ app.get('/chat', (req, res) => {
   const recipient = req.query.recipient;  
   const gameName = req.query.gameName; // Get the game name from the query parameters
   
-  if (!recipient) {
-    return res.status(400).send('Recipient is required');
+  if (!recipient || !gameName) {
+    return res.status(400).send('Recipient and game name are required');
   }
 
-  res.render('chat', { username: currentUser, recipient: recipient, gameName });
+  const currentUserProfilePicture = profiles[currentUser]?.profilePicture || 'defaultProfileIcon.jpg';
+  const recipientProfilePicture = profiles[recipient]?.profilePicture || 'defaultProfileIcon.jpg';
+
+  res.render('chat', { 
+    username: currentUser, 
+    recipient: recipient, 
+    gameName, 
+    currentUserProfilePicture, 
+    recipientProfilePicture 
+  });
 });
 
 app.get('/profile/:username', (req, res) => {
@@ -212,6 +238,24 @@ app.get('/profile/:username', (req, res) => {
   const totalWins = 57; 
   const ranks = profile.ranks; 
   res.render('profile', { username, profilePicture: profile.profilePicture, topGames: profile.topGames, games, reputation, profileCard: profile.cardBackground, totalEarnings, totalWins, ranks });
+});
+
+app.get('/results', (req, res) => {
+  const gameName = req.query.gameName;
+  const game = games.find(g => g.alt.toLowerCase().replace(/\s+/g, '') === gameName);
+  if (!game) {
+    return res.status(404).send("Game not found");
+  }
+  const currentUserProfilePicture = profiles[username]?.profilePicture || 'defaultProfileIcon.jpg';
+  const recipient = req.query.recipient;
+  const recipientProfilePicture = profiles[recipient]?.profilePicture || 'defaultProfileIcon.jpg';
+  res.render('results', { username, gameImg: game.img, gameName: game.alt, currentUserProfilePicture, recipientProfilePicture, recipient });
+});
+
+app.get('/shop', (req, res) => {
+  const walletAmount = 100; // Example wallet amount
+  const brawlPoints = 50; // Example brawl points amount
+  res.render('shop', { username, walletAmount, brawlPoints, shopItems });
 });
 
 const activeUsers = {}; //stores the usernames and uses the socket ID as the key
