@@ -52,7 +52,7 @@
               </div> 
               <div class="wager-chat-container">
                 <p class="wager-amount">$<%= player.wager %></p>
-                <a href="/chat?username=<%= currentUser %>&recipient=<%= player.username %>">
+                <a href="/chat?username=<%= currentUser %>&recipient=<%= player.username %>&gameName=<%= game.alt.toLowerCase().replace(/\s+/g, '') %>">
                   <button>Chat</button>
                 </a>
               </div>

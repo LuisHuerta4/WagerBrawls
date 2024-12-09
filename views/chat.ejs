@@ -23,6 +23,20 @@
         <button class="leave-room-button">Leave Room</button>
       </a>
     </div>
+    <div class="status-container">
+      <div class="status-indicators">
+        <div class="user-info">
+          <img src="/images/Assets/<%= currentUserProfilePicture %>" alt="User Profile" class="profile-icon">
+          <span class="user-name" id="user-name"><%= username %></span>
+        </div>
+        <div class="recipient-info">
+          <img src="/images/Assets/<%= recipientProfilePicture %>" alt="Recipient Profile" class="profile-icon">
+          <span class="recipient-name"><%= recipient %></span>
+        </div>
+      </div>
+      <button class="ready-button" id="ready-button">Ready</button>
+      <button class="confirm-button" id="confirm-button" style="display: none;">Confirm</button>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
@@ -31,7 +45,7 @@
       const messageInput = document.getElementById('message-input');
       const currentUser = "<%= username %>"; 
       const recipient = "<%= recipient %>";
-      const profileIcon = "/images/Assets/profileIcon1.jpg"; 
+      const profileIcon = "/images/Assets/mainProfileIcon.jpg"; 
 
       socket.emit('join room', { currentUser, recipient });
 
@@ -65,6 +79,24 @@
         const message = messageInput.value;
         socket.emit('chat message', { room: recipient, message });
         messageInput.value = '';
+      });
+
+      const readyButton = document.getElementById('ready-button');
+      const confirmButton = document.getElementById('confirm-button');
+      const userName = document.getElementById('user-name');
+
+      readyButton.addEventListener('click', () => {
+        if (userName.style.color === 'rgb(22, 210, 22)') {
+          userName.style.color = 'white'; 
+          confirmButton.style.display = 'none'; 
+        } else {
+          userName.style.color = 'rgb(22, 210, 22)'; 
+          confirmButton.style.display = 'block'; 
+        }
+      });
+
+      confirmButton.addEventListener('click', () => {
+        window.location.href = `/results?gameName=<%= gameName %>&recipient=<%= recipient %>`; // Redirect to results page with game name and recipient
       });
     </script>
   </body>

@@ -163,11 +163,20 @@ app.get('/chat', (req, res) => {
   const recipient = req.query.recipient;  
   const gameName = req.query.gameName; // Get the game name from the query parameters
   
-  if (!recipient) {
-    return res.status(400).send('Recipient is required');
+  if (!recipient || !gameName) {
+    return res.status(400).send('Recipient and game name are required');
   }
 
-  res.render('chat', { username: currentUser, recipient: recipient, gameName });
+  const currentUserProfilePicture = profiles[currentUser]?.profilePicture || 'defaultProfileIcon.jpg';
+  const recipientProfilePicture = profiles[recipient]?.profilePicture || 'defaultProfileIcon.jpg';
+
+  res.render('chat', { 
+    username: currentUser, 
+    recipient: recipient, 
+    gameName, 
+    currentUserProfilePicture, 
+    recipientProfilePicture 
+  });
 });
 
 app.get('/profile/:username', (req, res) => {
@@ -181,6 +190,18 @@ app.get('/profile/:username', (req, res) => {
   const totalWins = 57; 
   const ranks = profile.ranks; 
   res.render('profile', { username, profilePicture: profile.profilePicture, topGames: profile.topGames, games, reputation, profileCard: profile.cardBackground, totalEarnings, totalWins, ranks });
+});
+
+app.get('/results', (req, res) => {
+  const gameName = req.query.gameName;
+  const game = games.find(g => g.alt.toLowerCase().replace(/\s+/g, '') === gameName);
+  if (!game) {
+    return res.status(404).send("Game not found");
+  }
+  const currentUserProfilePicture = profiles[username]?.profilePicture || 'defaultProfileIcon.jpg';
+  const recipient = req.query.recipient;
+  const recipientProfilePicture = profiles[recipient]?.profilePicture || 'defaultProfileIcon.jpg';
+  res.render('results', { username, gameImg: game.img, gameName: game.alt, currentUserProfilePicture, recipientProfilePicture, recipient });
 });
 
 const activeUsers = {}; //stores the usernames and uses the socket ID as the key

@@ -1,0 +1,267 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2e236c;
+  font-family: "Russo One", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body, h1, h2, h3, p, li, button {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "Russo One", sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header img {
+  max-width: 100%;
+  width: 600px;
+  height: auto;
+  padding: 20px;
+}
+
+.game-image-box {
+  width: 500px;
+  max-width: 90%;
+}
+
+.game-image-box .game-picture {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.instructions-box {
+  width: 500px;
+  max-width: 90%;
+  background-color: #433d8b;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 1.2em;
+}
+
+.instructions-box h2 {
+  margin-bottom: 15px;
+}
+
+.instructions-box ol {
+  margin-left: 30px;
+}
+
+.security-box {
+  width: 500px;
+  max-width: 90%;
+  background-color: #433d8b;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 1.2em;
+}
+
+.security-box h2 {
+  margin-bottom: 15px;
+}
+
+.warning-box {
+  width: 500px;
+  max-width: 90%;
+  background-color: #433d8b;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 1.2em;
+}
+
+.warning-box h2 {
+  color: red;
+  margin-bottom: 15px;
+}
+
+.warning-box ul {
+  margin-left: 30px;
+}
+
+.vote-box {
+  position: absolute;
+  right: 100%;
+  width: 500px;
+  background-color: #433d8b;
+  border-radius: 10px;
+  padding: 20px 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-align: center;
+}
+
+.vote-box .game-picture {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.vote-button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  background-color: #1f1d4c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.vote-button:hover {
+  background-color: #17153b;
+}
+
+.left-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 500px;
+  max-width: 90%;
+}
+
+.left-sidebar h2 {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.right-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  right: 20%;
+  transform: translate(50%, -50%);
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.player-vote-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.player-vote .profile-icon {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.player-vote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.player-username {
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.green-circle {
+  background-color: green;
+}
+
+.rating-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.diamonds {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.diamond {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  cursor: pointer;
+}
+
+.purple-diamond {
+  background-color: rgb(164, 53, 201);
+}
+
+.submit-button {
+  display: none;
+}
+
+.return-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #1f1d4c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Russo One", sans-serif;
+}
+
+.return-button:hover {
+  background-color: #17153b;
+}
+
+.winner-text {
+  margin-top: 20px;
+  color: yellow;
+}
+
+.file-upload-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.file-upload-container h2 {
+  color: white;
+  margin-bottom: 10px;
+}
